@@ -22,8 +22,7 @@ class PatientController extends Controller
         $patient->email = $req->input('email');
         $patient->emergencyContact = $req->input('emergency_contact');
         $patient->medicalHistory = $req->input('medical_history');
-        $patient->updatedAt = $req->input('updated_at');
-        $patient->createdAt = $req->input('created_at');
+
         $patient->save();
 
         return $patient;
@@ -59,8 +58,7 @@ class PatientController extends Controller
             $patient->email = $req->input('email');
             $patient->emergencyContact = $req->input('emergency_contact');
             $patient->medicalHistory = $req->input('medical_history');
-            $patient->updatedAt = $req->input('updated_at');
-            $patient->createdAt = $req->input('created_at');
+            
             $patient->save();
         }
 
@@ -79,7 +77,7 @@ class PatientController extends Controller
 
         }else{
 
-            $patient->destroy();
+            $patient->delete();
 
         }
 
