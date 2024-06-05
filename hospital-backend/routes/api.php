@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AppointmentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/user', function(Request $request){
+    return $request->user();
+})->middleware('auth:sanctum');
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('bookAppointment',[AppointmentController::class, 'bookAppointment']);
+Route::get('viewAppointments',[AppointmentController::class, 'viewAppointments']);
+Route::delete('cancelAppointment',[AppointmentController::class, 'cancelAppointment']);
