@@ -27,3 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('bookAppointment',[AppointmentController::class, 'bookAppointment']);
 Route::get('viewAppointments',[AppointmentController::class, 'viewAppointments']);
 Route::delete('cancelAppointment',[AppointmentController::class, 'cancelAppointment']);
+
+Route::post('addDoctors',[DoctorController::class,'addDoctors']);
+Route::get('list',[DoctorController::class,'list']);
+Route::put('/updateDoctors/{id}', [DoctorController::class, 'updateDoctors']);
