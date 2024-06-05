@@ -26,6 +26,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//APPOINTMENT
+Route::post('bookAppointment',[AppointmentController::class, 'bookAppointment']);
+Route::get('viewAppointments',[AppointmentController::class, 'viewAppointments']);
+Route::delete('cancelAppointment',[AppointmentController::class, 'cancelAppointment']);
+
 //PATIENT
 
 Route::post('addPatient',[PatientController::class,'addPatient']);
