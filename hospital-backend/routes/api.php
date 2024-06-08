@@ -45,5 +45,10 @@ Route::get('viewUser',[UserController::class,'viewUser']);
 Route::put('/updateUser/{id}',[UserController::class,'updateUser']);
 Route::delete('/removeUser/{id}',[UserController::class,'removeUser']);
 
-Route::apiResource('medical_records', MedicalRecordController::class);
+// MEDICAL RECORD
+Route::get('medical_records', [MedicalRecordController::class, 'getAllMedicalRecords']);
+Route::post('medical_records', [MedicalRecordController::class, 'storeMedicalRecord']);
+Route::get('medical_records/{id}', [MedicalRecordController::class, 'getMedicalRecordById']);
+Route::put('medical_records/{id}', [MedicalRecordController::class, 'updateMedicalRecord']);
+Route::delete('medical_records/{id}', [MedicalRecordController::class, 'deleteMedicalRecord']);
 
