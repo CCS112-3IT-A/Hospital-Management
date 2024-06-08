@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 
 class MedicalRecordController extends Controller
 {
-    public function index()
+    // Retrieve all medical records
+    public function getAllMedicalRecords()
     {
         $records = MedicalRecord::with(['patient', 'doctor'])->get();
         return response()->json($records);
     }
 
-    public function store(Request $request)
+    // Store a new medical record
+    public function storeMedicalRecord(Request $request)
     {
         $request->validate([
             'patient_id' => 'required|exists:patients,id',
@@ -29,13 +31,15 @@ class MedicalRecordController extends Controller
         return response()->json($record, 201);
     }
 
-    public function show($id)
+    // Retrieve a specific medical record by id
+    public function getMedicalRecordById($id)
     {
         $record = MedicalRecord::with(['patient', 'doctor'])->findOrFail($id);
         return response()->json($record);
     }
 
-    public function update(Request $request, $id)
+    // Update an existing medical record
+    public function updateMedicalRecord(Request $request, $id)
     {
         $request->validate([
             'patient_id' => 'required|exists:patients,id',
@@ -51,7 +55,8 @@ class MedicalRecordController extends Controller
         return response()->json($record);
     }
 
-    public function destroy($id)
+    // Delete a medical record
+    public function deleteMedicalRecord($id)
     {
         $record = MedicalRecord::findOrFail($id);
         $record->delete();
