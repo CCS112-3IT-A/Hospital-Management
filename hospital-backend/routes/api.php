@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MedicalRecordController;
 
 
 /*
@@ -43,3 +44,6 @@ Route::post('addUser',[UserController::class,'addUser']);
 Route::get('viewUser',[UserController::class,'viewUser']);
 Route::put('/updateUser/{id}',[UserController::class,'updateUser']);
 Route::delete('/removeUser/{id}',[UserController::class,'removeUser']);
+
+Route::apiResource('medical_records', MedicalRecordController::class);
+
