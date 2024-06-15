@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
+
     function addDoctors(Request $req)
     {
         $doctor = new Doctor;
@@ -16,8 +16,6 @@ class DoctorController extends Controller
         $doctor->license_number=$req->input('license_number');
         $doctor->phone=$req->input('phone');
         $doctor->email=$req->input('email');
-        $doctor->created_at=$req->input('created_at');
-        $doctor->updated_at=$req->input('updated_at');
         $doctor->save();
         return $doctor;
     }
@@ -26,6 +24,8 @@ class DoctorController extends Controller
     {
         return Doctor::all();
     }
+
+    
     function updateDoctors(Request $req, $id) {
         $doctor = Doctor::find($id);
 
@@ -38,11 +38,32 @@ class DoctorController extends Controller
             $doctor->license_number=$req->input('license_number');
             $doctor->phone=$req->input('phone');
             $doctor->email=$req->input('email');
-            $doctor->created_at=$req->input('created_at');
-            $doctor->updated_at=$req->input('updated_at');
+            
             $doctor->save();
     
             return response()->json($doctor);
         }
     }
+
+
+
+    function removeDoctors($id){
+
+        $doctor= Doctor::find($id);
+
+
+        if(!$id){
+
+            response()->json(['error'=>'Doctor not found']);
+
+        }else{
+
+            $doctor->delete();
+
+        }
+
+
+
+    }
+
 }
